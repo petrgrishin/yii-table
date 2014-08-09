@@ -11,9 +11,15 @@ class Row {
     protected $id;
     /** @var Column[] */
     protected $columns = array();
+    /** @var Field[] */
+    protected $fields = array();
 
-    public function __construct($id) {
+    public function __construct($id, $columns) {
         $this->id = $id;
+        $this->columns = $columns;
+        foreach ($columns as $code => $column) {
+            $this->fields[$code] = new Field($column);
+        }
     }
 
     /**
@@ -30,13 +36,11 @@ class Row {
         return $this->columns;
     }
 
-    /**
-     * @param Column[] $columns
-     * @return $this
-     */
-    public function setColumns($columns) {
-        $this->columns = $columns;
-        return $this;
+    public function getField($code) {
+        if (!array_key_exists($code, $this->fields)) {
+            throw new \Exception(sprintf('Field by code `%s` is not exists', $code));
+        }
+        return $this->fields[$code];
     }
 }
  

@@ -52,8 +52,7 @@ class TableWidget extends BaseWidget {
      * TODO: реализовать strict mode для id строк
      */
     public function addRow($id) {
-        $row = new Row($id);
-        $row->setColumns($this->getColumns());
+        $row = new Row($id, $this->getColumns());
         $this->rows[] = $row;
     }
 }
