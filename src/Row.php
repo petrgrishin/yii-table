@@ -36,6 +36,11 @@ class Row {
         return $this->columns;
     }
 
+    /**
+     * @param $code
+     * @return Field
+     * @throws \Exception
+     */
     public function getField($code) {
         if (!array_key_exists($code, $this->fields)) {
             throw new \Exception(sprintf('Field by code `%s` is not exists', $code));
