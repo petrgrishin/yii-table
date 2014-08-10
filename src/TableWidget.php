@@ -57,5 +57,11 @@ class TableWidget extends BaseWidget {
         $this->rows[] = $row;
         return $row;
     }
+
+    public function run() {
+        $this->render('table', array(
+            'rows' => $this->rows,
+        ));
+    }
 }
  
