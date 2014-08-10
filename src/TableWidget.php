@@ -60,6 +60,7 @@ class TableWidget extends BaseWidget {
 
     public function run() {
         $this->render('table', array(
+            'columns' => $this->columns,
             'rows' => $this->rows,
         ));
     }
