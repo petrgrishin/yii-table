@@ -10,8 +10,17 @@ use PetrGrishin\Table\Row;
 $table = HtmlTag::create('table')
     ->addClass('table')
     ->begin();
+
 /** @var Column[] $columns */
 $columns = $this->getParam('columns');
+$tr = HtmlTag::create('tr')->begin();
+foreach ($columns as $column) {
+    HtmlTag::create('th')
+        ->setContent($column->getName())
+        ->run();
+}
+$tr->end();
+
 /** @var Row[] $rows */
 $rows = $this->getParam('rows');
 foreach ($rows as $row) {
